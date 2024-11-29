@@ -356,6 +356,9 @@ Ví dụ: "book", "cat", "run". Các từ này mang nghĩa cụ thể và có th
 ### Thuật ngữ:
 - affixes: tiền tố hậu tố
 - stem: từ gốc
+- lexicon: is a vocabulary, a list of words, a dictionary.
+- WordNet là lexicon database cho tiếng Anh
+- NLG: Natural Language Generation
 
 ### Orthographic rules: Finite State Transducer (FST)
 
@@ -370,3 +373,49 @@ Zipf's Law nói rằng trong một ngữ cảnh cụ thể (ví dụ như một 
 - Parsing (Phân tích cú pháp): Quá trình phân tích cú pháp trong symbolic NLP sử dụng các quy tắc hình thức để xây dựng cây cú pháp (parse tree) cho một câu, xác định cấu trúc ngữ pháp của câu đó.
 - Semantic interpretation (Diễn giải ngữ nghĩa): Các mô hình symbolic có thể xây dựng các biểu diễn ngữ nghĩa từ các câu văn bằng cách sử dụng các quy tắc để hiểu mối quan hệ giữa các đối tượng trong câu (ví dụ: "John eats an apple" có thể được biểu diễn dưới dạng một biểu thức logic như "eats(John, apple)").
 - Knowledge representation: Các hệ thống symbolic có thể sử dụng lý thuyết đồ thị hoặc mạng lưới khái niệm để đại diện cho các thực thể và mối quan hệ giữa chúng trong cơ sở tri thức (knowledge base). Điều này giúp hệ thống có thể suy luận và trả lời các câu hỏi một cách logic.
+
+### Finite Automata (FA)
+Finite Automata (FA), hay Máy tự động hữu hạn, là một mô hình toán học dùng để mô tả các hệ thống có trạng thái hữu hạn. FA được sử dụng rộng rãi trong lý thuyết tính toán, xử lý ngôn ngữ hình thức, và xây dựng trình biên dịch.
+
+Một Finite Automata thường được định nghĩa bởi một ngũ giác M=(Q,Σ,δ,q0,F), trong đó:
+- Q: Tập hợp hữu hạn các trạng thái.
+- Σ: Bảng chữ cái đầu vào (tập hợp các ký hiệu đầu vào).
+- δ: Hàm chuyển trạng thái (δ:Q×Σ→Q), chỉ định trạng thái tiếp theo dựa trên trạng thái hiện tại và ký hiệu đầu vào.
+- q0: Trạng thái bắt đầu, q0∈Q.
+- F: Tập các trạng thái kết thúc (trạng thái chấp nhận), F⊆Q.
+
+Finite Automata được chia thành hai loại chính:
+
+- Deterministic Finite Automaton (DFA): Mỗi trạng thái và ký hiệu đầu vào chỉ dẫn đến một trạng thái duy nhất.
+- Non-deterministic Finite Automaton (NFA): Có thể có nhiều chuyển trạng thái từ một trạng thái với cùng một ký hiệu đầu vào.
+
+- In NFA, null (or ε) move is allowed i.e., it can move forward without reading symbols.
+
+### Finite-State Transducers (FS Transducers, FST) 
+là một mô hình toán học mở rộng của Finite Automata
+
+- Deterministic FST (DFST): Với mỗi trạng thái và ký hiệu đầu vào, luôn có duy nhất một trạng thái tiếp theo và một chuỗi đầu ra.
+- Non-deterministic FST (NFST): Có thể tồn tại nhiều trạng thái tiếp theo và chuỗi đầu ra cho một trạng thái và ký hiệu đầu vào cụ thể.
+
+Tùy vào mục đích sử dụng, FST có thể được cấu hình để hoạt động theo các chế độ như generation, recognition, translation, hoặc analysis:
+
+- Generation Mode: Sinh đầu ra từ đầu vào dựa trên các quy tắc đã định nghĩa. VD: Một FST nhận vào dạng cơ bản của từ trong tiếng Anh như walk + past và sinh ra từ dạng chia thì: walked.
+- Recognition Mode: Kiểm tra xem một chuỗi đầu vào có được chấp nhận bởi FST hay không. VD: Kiểm tra xem từ "running" có phải là một từ hợp lệ trong ngôn ngữ tiếng Anh hay không.
+- Translation Mode: Biến đổi một chuỗi đầu vào thành một chuỗi đầu ra với các quy tắc chuyển đổi phức tạp. Vd: Chuyển đổi từ tiếng Anh cat thành từ tương đương trong tiếng Pháp chat.
+- Analysis Mode: Phân tích chuỗi đầu vào và ánh xạ nó về dạng cơ bản hoặc biểu diễn trừu tượng. VD: Từ đầu vào cats, FST tạo ra đầu ra cat + PLURAL.
+
+### Porter stemmer algorithm
+Porter Stemmer Algorithm là một thuật toán phổ biến được sử dụng để rút gọn từ (stemming) trong lĩnh vực xử lý ngôn ngữ tự nhiên (NLP). Nó giúp chuyển một từ về dạng gốc hoặc dạng căn bản của nó bằng cách loại bỏ các hậu tố (suffixes) nhưng không cố gắng ánh xạ chính xác về từ nguyên gốc.
+
+Đầu ra: Một "stem" (gốc từ) mà không nhất thiết phải là từ đúng về mặt ngữ pháp trong ngôn ngữ tự nhiên.
+
+### N-Gram Stemmer
+là một phương pháp rút gọn từ (stemming) dựa trên các N-grams, tức là các chuỗi con có độ dài cố định N, để phân tích và xác định gốc từ. Phương pháp này không dựa trên quy tắc loại bỏ hậu tố như các thuật toán Porter Stemmer hay Snowball Stemmer, mà thay vào đó sử dụng các n-grams để tìm ra các mẫu (patterns) chung giữa các từ có liên quan.
+
+N-Gram: Là một chuỗi con gồm N ký tự liền kề từ một từ. Ví dụ: Với N=3, từ "running" sẽ được chia thành các n-grams: run, unn, nni, nin, ing.
+
+Keywork: language independent
+
+### Stemming error
+- Overstemming (Lỗi rút gọn quá mức)
+- Understemming (Lỗi rút gọn chưa đủ)
