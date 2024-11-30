@@ -286,6 +286,9 @@ Cải tiến:
 - Hyponyms (Từ hạ nghĩa)
 - Meronyms (Từ bộ phận)
 - Homonyms (Từ đồng âm)
+- Polysemy (Đồng âm đa nghĩa)
+- Metonymy (Hoán dụ)
+- 
 - anaphora (khi một đại từ tham chiếu lại một danh từ đã được đề cập trước đó)
 - cataphora (khi một đại từ tham chiếu tới một danh từ sẽ xuất hiện sau trong văn bản).
 - polarity categories: Phân loại tiêu cực: positive, negative, neutral
