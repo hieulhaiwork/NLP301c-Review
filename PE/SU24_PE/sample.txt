@@ -1,3 +1,0 @@
-This is a sample text file.
-It contains  several sentences.
-We can count words, characters, and sentences.
